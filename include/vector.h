@@ -48,6 +48,16 @@ typedef struct {
  */
 Vector* makeVector(int32_t intialCap);
 
+/**
+ * this function is used to add element, by the address, to Vector Structure 
+ * without recording the actual type of it.
+ * @vector the vector to add to.
+ * @ele the address "pointer" to the element to add ""
+ * Note:
+ *      this element to be added must be an allocated element or the freeVector
+ *      function is going to fail with segfault.
+ */
+void addEleVector(Vector* vector, void* ele);
 
 /**
  * this function free the memeory of the space allocated for the elements and the 
@@ -66,9 +76,27 @@ void freeVector(Vector* vector);
 DynVector* makeDynVector(int32_t intialCap);
 
 /**
+ * this function is used to add element, by the address, 
+ * to Vector Structure and recording the actual type of it.
+ * @vector the vector to add to.
+ * @ele the address "pointer" to the element to add ""
+ * @type the number representation of the type.
+ * Note:
+ *      this element to be added must be an allocated element or the freeVector
+ *      function is going to fail with segfault.
+ *      
+ * Design Note:
+ *  we choose to copy the type rather than actually accepting the pointer to it so it's easier for the client.
+ *
+ */
+
+void addEleDynVector(DynVector* vector, void* ele, int32_t type);
+
+/**
  * this function free the memeory of the space allocated for the elements and the 
  *      vector itself
  * @vector pointer to the vector to be freed
  */
 void freeDynVector(DynVector* dynVector);
+
 
