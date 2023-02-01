@@ -101,6 +101,7 @@ DynVector* makeDynVector(int32_t initialCap)
     // set the members of the returned vector to their correct values.
     value_to_return->cap = initialCap;
     value_to_return->size = 0;
+    value_to_return->types = types;
     value_to_return->dynVector = dynVector;
 
     return value_to_return;
